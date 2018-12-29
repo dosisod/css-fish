@@ -4,6 +4,8 @@ width=$(awk '{print $1}' <<< $@)
 height=$(awk '{print $2}' <<< $@)
 name=$(awk '{print $3}' <<< $@)
 
+>"$name" # clears file
+
 for ((i=0;i<=$width;i++)) # does all of the css selectors for width
 do
 	echo -n "@media (width:"$i"px){#w{background:url('/?w="$i"')}}" >> "$name"
